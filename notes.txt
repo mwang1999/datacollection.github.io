@@ -1,0 +1,164 @@
+Web Analytics Terms from Google Analytics
+
+Hit
+-any pageview or interaction with the website
+-4 types: pageview tracking hit, event tracking hit, ecommerce tracking hit, and social interraction hit 
+
+Pageview hit/event hit
+-pageview: tracks visitors’ movements from page to page. implemented by pasting Google Analytics code onto all website pages. this tracks location, devices, url, etc. data can only be sent when the page is loaded so it doesn’t track when the page does not load
+-event tracking: page interactions which do not cause a page to load. using eventCategory, eventAction, eventLabel, and eventValue
+
+Session
+-tells us how many times a visitor has visited the website
+-groups all hits/interactions while a visitor was on the website
+-used to find customer patterns
+
+User
+-user metric tallies the number of visitors that access the website within a specific calendar day/days
+-each visitor is given an unique ID
+-cookies are used to identify every visitor
+(try out using cookies)
+-but cookies can be deleted and if a visitor revisits the website after deletion ,  a new unique ID will be assigned to the visitor
+
+Referrer
+-websites that lead traffic/sessions to our website
+-ex: Google can be a rerferrer
+
+Paid Traffic/Organic Traffic/Direct Traffic
+-paid traffic and organic traffic can be thought of as the branches of sessions
+-getting traffic through paid means is paid traffic eg. buying ads to lead to website
+-traffic without paying is organic traffic eg. SEO - search engine optimization
+-direct traffic is when a user directly enters the website’s URRL 
+
+Entrance
+-entrance is different from a session in that entrance begins on the first pageview hit while session begins on the first hit of any type
+
+Bounce rate
+-a bounce session is where a visitor enters a website and then leaves without a single interaction
+-Bounce rate is the percentage of these sessions which is calculated
+Bounce ate = (Total bounces/Total sessions)*100
+
+Average session duration
+-session duration subtracts the time between the visitor’s last pageview/interaction and the fist pageview/interaction
+-session duration does not account for bounced sessions because only one pageview will occur thus the timestamps when subtracted will equal 0
+
+Exit Rate
+-exit rate tells us how many times a page was the last page viewed in a session
+
+goals??
+-milestones fo businesses eg. an ecommerce platform making a sale or an NGO getting a volunteer signup
+-these goals allow for meaningful reports
+
+Landing page
+-the first page of each session
+-making landing pages better lowers bounce rate and ups engagement/average duration time
+
+New user/Returning user
+-a new user is a first time visitor
+-returning visitor is someone who has been logged in the past and is revisiting the site
+-new users can be looked at for customer acquisition
+-returning users can be used for customer loyalty/retention
+
+
+Pageviews
+-the number of times visitors view individual pages
+-accounts for page refreshes and revisiting, need to implement condition where page refreshes are not counted
+-on google analytics, it’s the count of total pageview trackign hits
+-IF GOOGLE ANALYTICS CODE IS PASTED MORE THAN ONCE, THIS WILL INFLATE THE METRIC
+
+Segments
+-grouping of people based on commonality
+-eg. customer segment of 24 year old females in Paris would  be Age=24, Gender=Females, Location=Paris
+-helps us understand our target market
+-there’s also an option for behavior based segments in Google Analytics
+
+Web Server Notes
+Most major websites are “dynamic websites” which can generate and return content based on the specific request URL and data (rather than always returning the same hard-coded file for a particular URL).
+
+A static site is one that returns the same hard coded content form the server whenever a particular resource is requested.
+eg. If you have a page about a product at /static/myproduct1.html, the same page will be returned to every user. But if you add another similar product, you’re gonna need a myproduct2.html. Basically, for any new entry or any new page, you’re gonna have to create a new page every time. [This doesn’t seem to be related to data collection methods].
+
+Dynamic site generates and returns content based on the specific request URL and data. It can construct HTML pages as a response for particular requests. [Again, doesn’t seem to affect user information]
+
+Web Storage Concepts and Usage
+Two mechanisms within Web Storage
+1. sessionStorage maintains a separate storage area for each given origin that’s available for the duration of the page session
+    1. It stores data only for a session, meaning the data is available until the browser is closed
+    2. Data is never transferred to a server!!!!!!!!
+    3. Storage limit is larger than a cookie
+2. localStorage similar to sessionStorage but it persists even after the browser is closed
+    1. Stores data with no expiration date and is cleared only though JavaScript or clearing the Browser cache/Locally stored data
+
+Using HTTP cookies
+1. An HTTP cookie is a small piece of data that server sends to the user’s web browser. The browser may store it and send it back with later requests to the same server. There are three uses:
+    1. Logins, shopping carts, game scorers, or anything else that the server should remember
+    2. User preferences, themes, and other settings
+    3. Tracking ——— Recording and analyzing user behavior
+2. Making cookies
+    1. A server can send one or more Set-Cookie headers with the response. The cookie is usually stored by the browser, and then the cookie is sent with requests made to the same server inside a Cookie HTTP header. An expiration date or duration can be specified after which the cookie will no longer be sent.
+3. Session cookies vs. Permanent cookies
+    1. Session cookies are deleted when the current session ends. The browser defines when “the current session” ends. Some browsers may use session restoring when restarting which will cause session cookies to last indefinitely long
+    2. Permanent cookies are deleted at a date specified by the Expires attribute, or after a period of time specified by the Max-Age attribute
+        1. eg. Set-Cookie: id=a3fWa; Expires=Wed, 31 Oct 2021 07:28:00 GMT;
+    3. Restrict access to cookies
+        1. Using the Secure attribute and the HttpOnly attribute.
+            1. The securer attribute is sent to the server only with an encrypted request over HTTPS protocol
+            2. HttpOnly is inaccessible to the JavaScript Document.cookie API. It is only sent to the server. Cookies that persist server-side sessions don’t need to be available to JavaScript and should have the HttpOnly attribute. eg. Set-Cookie: id=123; Expires … ; Secure; HttpOnly
+4. Transient vs. Persistent Cookies (Maybe the same as Session vs. Permanent)
+    1. Transient cookies will group the series of clicks that you have made during your visit to the website. Essentially, these cookies will keep track of the activity (eg. items you wish to purchase)
+    2. Perrsistent cookies will stay within the server until a specified duration. (Pretty surer this is a permanent cookie). Typically, the expiration date is set to 18 months.
+
+Set-cookie header is the web server asks the client to set the cookie for it data while Document.cookie (JavaScript) sets the cookie.
+When making a request to a site, it can respond with the body or a bunch of headers with a bunch of headers. One of these headers can be Set-cookie and the browser will set the
+cookie for you.
+
+Same site: If this property isn't set to true, there is some security risk. If you click a link that goes to a different website from what you arer currently
+viewing, the website will transfers your cookie data to that website.
+
+Client-side vs. Server-side
+Client side means that the action takes place on the user’ computer
+Sever-side means that the action takes place on a web browser.
+
+Top Level Domain vs. Subdomain
+Top-level domain is one of the domains at the highest level in the hierarchial domain name systems of the Internet. Eg. For a domain name like example.com, the top level domain is com.
+
+Httponly cookies are cookies that can only be set from the server, and the browser cannot read them. This is for security against cross-site scripting. It will only get sent to
+the server.
+
+Questions:
+1. How to get the website compatible with Google Chrome? I think once I set it up to SameSite = strict, the cookies app should work on Chrome as well. But, I'm still going to have to test
+this after pushing.
+
+2. How to retrieve IP from users? I'm guessing I'll have to use the server logs and pair requests made by IP addresses to a cookie.
+    a. Is there a way to view GithubPage's server logs?
+
+3. 
+
+Thoughts:
+I noticed that Google Analytics sets three types of cookies: 
+
+_ga which expires in 2 years and used for visitor identification. This ID is stored to keep track of a particular visitor and marks him so that for future revisits. He won't be
+considered a unique visitor. 
+
+_gi which expires in 24 hours which monitors the "user's journey", and his or her activity. I'm still not sure how this measures user behavior, but my guess would be that it
+helps log the users path as he/she moves to different pages.
+
+_gat which expires in 10 minutes which is the "throttling request rate". This means it's used to increase the efficiency of network calls. For example, if you were to doubleclick
+a particular link on a website, to limit the number of requests you'd be sent from your browser, the cookie is created (?).
+
+Since each of these cookies have an expiration date, it seems that they don't use localStorage or session type cookies. They opt for declaring specific expiration dates
+
+_ga is used for visitor tracking. 
+
+I'm guessing JavaScript cookies aren't adequate to use for the purpose of visitor tracking since they're limited to Session storage as seen through the app (?).
+I'm gonna need to implement Web Server cookies that will make requests to the client.
+When my cookies are set, they are only kept in separate storages that you can see in the inspect element.
+
+I wonder if I need to switch over to a Dynamic Website using MySQL or PHP in order to be able be able to hold other users data. PROBABLY NOT because the purpose of the project
+isn't to change the data being requested for each individual user. We're just trying to collect unique data from every visitor of the website.
+
+Currently, I'm researching how to use Express to create web server cookies instead of only creating these cookies client-side. 
+
+I'll probably look for some sort of API that will allow me to generate the location of the user through the IP address that's give in the HTTP log.
+
+For visual event tracking and codeless tracking there's a lot of premade products that can be used.

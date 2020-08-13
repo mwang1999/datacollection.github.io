@@ -10,8 +10,8 @@ function saveCookies()
 	myCookies["_user"] = document.getElementById("user").value;
 	myCookies["_uage"] = document.getElementById("age").value.toString();
 	//Start reusable code
-	document.cookie = "";
-	var expiresAttrib = new Date(Date.now()+60*1000).toString();
+	document.cookie = "; samesite=strict";
+	var expiresAttrib = new Date(Date.now()+60*1000).toString(); //Expiration date is set to 60,000 seconds
 	var cookieString = "";
 	for (var key in myCookies)
 	{
