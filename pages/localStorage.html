@@ -1,0 +1,52 @@
+<!--Local storage was added to HTML5 standard and allows javascript to store key-values without cookies. This replaces cookies for client-side applications. Servers can't access them; thus, they can't be used to remember users. But this data lasts forever unless it's manually removed, or the browser is uninstalled. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+
+function saveValues()
+{
+	localStorage._user = document.getElementById("user").value;
+	localStorage._uage = document.getElementById("age").value;
+}
+
+function loadValues()
+{
+	document.getElementById("user").value = localStorage._user;
+	document.getElementById("age").value = localStorage._uage;
+}
+
+</script>
+</head>
+
+<body>
+<!-- ======= Header ======= -->
+	 <header id="header" class="fixed-top">
+		<div class="container d-flex">
+	
+		  <div class="logo mr-auto">
+			<h1 class="text-light"><a href="index.html">Local Storage App</a></h1>
+			<!-- Uncomment below if you prefer to use an image logo -->
+			<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+		  </div>
+	
+		  <nav class="nav-menu d-none d-lg-block">
+			<ul>
+			  <li class="active"><a href="../index.html">Home</a></li>
+			  <li><a href="cookieApp.html">Cookies App</a> </li>
+			  <li><a href="localStorage.html">Local Storage App</a></li>
+			  <li><a href="sessionStorage.html">Session Storage App</a></li> 
+			</ul>
+		  </nav><!-- .nav-menu -->
+	
+		</div>
+	  </header>
+<!-- End Header -->
+User: <input type="text" id="user">
+Age: <input type="text" id="age">
+<button onclick="saveValues()">Save To Local Storage</button>
+<button onclick="loadValues()">Load to Local Storage</button>
+
+</body>
+
+</html>

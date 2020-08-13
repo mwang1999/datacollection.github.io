@@ -1,0 +1,73 @@
+<!--Cookies are strings of data stored in the user's browser over multiple sessions. They're used a lot for storing logged in users. This data is typically stored as name-value pairs. By remembering user's settings over multiple sessions or page changes, the website owner can optimize user experience. When running as a local file, Google can't store cookies. Also, when running on a local file, expiration dates are forced to the end of a session.-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+var myCookies= {}
+
+function saveCookies()
+{
+	myCookies["_user"] = document.getElementById("user").value;
+	myCookies["_uage"] = document.getElementById("age").value.toString();
+	//Start reusable code
+	document.cookie = "";
+	var expiresAttrib = new Date(Date.now()+60*1000).toString();
+	var cookieString = "";
+	for (var key in myCookies)
+	{
+		cookieString = key + "=" + myCookies[key] + ";" + expiresAttrib + ";";
+		document.cookie = cookieString;
+	}
+	//End reusable code
+	document.getElementById("out").innerHTML = document.cookie;
+}
+
+function loadCookies()
+{
+	//Start reusable code
+	myCookies = {};
+	var kv = document.cookie.split(";"); //kv = key value
+	for (var id in kv)
+	{
+		var cookie = kv[id].split("=");
+		myCookies[cookie[0].trim()] = cookie[1]; //trim to remove whitespace
+	}
+	//end reusable code
+	document.getElementById("user").value = myCookies["_user"];
+	document.getElementById("age").value = myCookies["_uage"]; //Reload the stored data
+}	
+</script>
+</head>
+
+<body>
+ <!-- ======= Header ======= -->
+ <header id="header" class="fixed-top">
+    <div class="container d-flex">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="index.html">Cookie App</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="../index.html">Home</a></li>
+          <li><a href="cookieApp.html">Cookies App</a> </li>
+          <li><a href="localStorage.html">Local Storage App</a></li>
+          <li><a href="sessionStorage.html">Session Storage App</a></li> 
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header>
+<!-- End Header -->
+
+User: <input type="text" id="user">
+Age: <input type="text" id="age">
+<button onclick = "saveCookies()">Save To Cookies </button>
+<button onclick="loadCookies()"> Load from Cookies </button>
+<p id="out"></p>
+
+</body>
+</html> 

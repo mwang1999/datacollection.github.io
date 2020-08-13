@@ -1,0 +1,52 @@
+<!--Sessions will store data as long as the tab is still open. These can be used for shopping carts or any sort of data the user might wish to save throughout their visit. Session cookies will be deleted after the tab is closed.-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+
+function saveValues()
+{
+	sessionStorage._user = document.getElementById("user").value;
+	sessionStorage._uage = document.getElementById("age").value;
+}
+
+function loadValues()
+{
+	document.getElementById("user").value = sessionStorage._user;
+	document.getElementById("age").value = sessionStorage._uage;
+}
+
+</script>
+</head>
+
+<body>
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+	<div class="container d-flex">
+
+	  <div class="logo mr-auto">
+		<h1 class="text-light"><a href="index.html">Session Storage App</a></h1>
+		<!-- Uncomment below if you prefer to use an image logo -->
+		<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+	  </div>
+
+	  <nav class="nav-menu d-none d-lg-block">
+		<ul>
+		  <li class="active"><a href="../index.html">Home</a></li>
+		  <li><a href="cookieApp.html">Cookies App</a> </li>
+		  <li><a href="localStorage.html">Local Storage App</a></li>
+		  <li><a href="sessionStorage.html">Session Storage App</a></li> 
+		</ul>
+	  </nav><!-- .nav-menu -->
+
+	</div>
+  </header>
+<!-- End Header -->
+User: <input type="text" id="user">
+Age: <input type="text" id="age">
+<button onclick="saveValues()">Save To Session</button>
+<button onclick="loadValues()">Load to Session</button>
+
+</body>
+
+</html>
