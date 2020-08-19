@@ -131,6 +131,7 @@ this after pushing.
 
 2. How to retrieve IP from users? I'm guessing I'll have to use the server logs and pair requests made by IP addresses to a cookie.
     a. Is there a way to view GithubPage's server logs?
+    b. I think I should be lookign at Nodejs logging tool.
 
 3. 
 
