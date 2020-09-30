@@ -12,6 +12,7 @@ const server = http.createServer(function(req,res){
             res.write(data)
         }
         res.end()
+    res.writeHead(200, {'Content-Type': 'text/css' })
     })
 });
 
