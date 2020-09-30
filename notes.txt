@@ -145,7 +145,8 @@ _gi which expires in 24 hours which monitors the "user's journey", and his or he
 helps log the users path as he/she moves to different pages.
 
 _gat which expires in 10 minutes which is the "throttling request rate". This means it's used to increase the efficiency of network calls. For example, if you were to doubleclick
-a particular link on a website, to limit the number of requests you'd be sent from your browser, the cookie is created (?).
+a particular link on a website, to limit the number of requests you'd be sent from your browser, the cookie is created (?). This cookie tracks user timing, meaning it measures the amount of time
+it takes for a web page to load for a user.
 
 Since each of these cookies have an expiration date, it seems that they don't use localStorage or session type cookies. They opt for declaring specific expiration dates
 
